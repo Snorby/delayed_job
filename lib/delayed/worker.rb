@@ -154,7 +154,8 @@ module Delayed
     def say(text, level = Logger::INFO)
       text = "[Worker(#{name})] #{text}"
       puts text unless @quiet
-      logger.add level, "#{Time.now.strftime('%FT%T%z')}: #{text}" if logger
+      # This will cause a broken pipe
+      # logger.add level, "#{Time.now.strftime('%FT%T%z')}: #{text}" if logger
     end
 
     def max_attempts(job)
